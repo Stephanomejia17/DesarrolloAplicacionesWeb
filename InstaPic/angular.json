@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "JuegoAngular": {
+    "insta-pic-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "JuegoAngular:build:production"
+              "buildTarget": "insta-pic-app:build:production"
             },
             "development": {
-              "buildTarget": "JuegoAngular:build:development"
+              "buildTarget": "insta-pic-app:build:development"
             }
           },
           "defaultConfiguration": "development"
