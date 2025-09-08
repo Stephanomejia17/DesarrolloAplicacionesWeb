@@ -10,6 +10,12 @@
             <input type="password" id="password" placeholder="Ingrese contraseña" formControlName="password"/>
             <label>Confirmar contraseña</label>
             <input type="password" id="rePassword" placeholder="Confirme contraseña" formControlName="rePassword"/>
+            @if (signUpForm.hasError('passwordMismatch') && signUpForm.get('rePassword')?.touched) {
+                <div class="error">
+                    Las contraseñas no coinciden
+                </div>
+            }
+
         </form>
         <a class="primary" (click)="onSignUp()">Crear usuario</a>
         <a class="secondary" routerLink="ruta">Regresar</a>

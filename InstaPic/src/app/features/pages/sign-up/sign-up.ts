@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { passwordMatchValidator } from '../../../shared/validator/password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,15 +19,19 @@ export class SignUp {
 
   validators = [Validators.required, Validators.minLength(4)];
 
-  signUpForm = this.fb.group({
-    username:['jjzapata', [Validators.required]],
-    email:['', [Validators.required]],
-    password:['', this.validators],
-    rePassword:['',  this.validators],
-  })
+  signUpForm = this.fb.group(
+    {
+      username:['', [Validators.required]],
+      email:['', [Validators.required]],
+      password:['', this.validators],
+      rePassword:['',  this.validators],
+    },
+    { validators: passwordMatchValidator('password', 'rePassword') }
+  )
 
 
   onSignUp(){
+    this.signUpForm.markAllAsTouched();
     if(!this.signUpForm.valid){
       alert('Faltan campos por diligenciar');
       return;
